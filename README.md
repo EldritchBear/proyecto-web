@@ -15,7 +15,6 @@
 
 ### Funcionalidades
 
-> [!NOTE]
 > Las funcionalidades que contara nuestra aplicación móvil serán las siguientes:
 1.-Inicio sesión: el usuario podrá iniciar sesión en la aplicación móvil colocando su nombre de usuario y contraseña, una vez hecho esto, obtendrá acceso al resto de funcionalidades
 2.-Registrarse: si el usuario no tiene una cuenta asociada, deberá crear una, introduciendo los datos requeridos para crear una cuenta
