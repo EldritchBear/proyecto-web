@@ -8,7 +8,9 @@
 
 </div>
 
-Integrantes: Fernando Arancibia
+Integrantes: 
+     
+             Fernando Arancibia
   
              Elías Bernales
              
