@@ -8,7 +8,6 @@
 
 </div>
 
-<div>
 Integrantes: Fernando Arancibia
   
              Elías Bernales
@@ -16,7 +15,6 @@ Integrantes: Fernando Arancibia
              Reinaldo Foitzick
              
              Felipe Zepeda
-</div>
 
 ## Descripción
 
