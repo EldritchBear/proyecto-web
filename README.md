@@ -10,7 +10,7 @@
 
 ## Descripción
 
-Este proyecto busca crear una aplicación web donde se puede monitorear a robots de rescate. Interesa ver las personas que ha encontrado en el circuito actual y poder editar el robot.
+El proyecto consiste en diseñar un robot de rescate autónomo capaz de explorar un laberinto, encontrar víctimas, regresar al punto de entrada y evitar agujeros, mientras se desarrolla una aplicación web que permite monitorear a los robots de rescate en tiempo real, visualizando las personas encontradas en el circuito actual y brindando la posibilidad de editar el comportamiento del robot.
 
 ### Funcionalidades
 
