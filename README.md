@@ -10,8 +10,7 @@
 
 ## Descripción
 
-> [!NOTE]
-> Crear una breve descripción de su proyecto.
+Este proyecto busca crear una aplicación web donde se puede monitorear a robots de rescate. Interesa ver las personas que ha encontrado en el circuito actual y poder editar el robot.
 
 ### Funcionalidades
 
