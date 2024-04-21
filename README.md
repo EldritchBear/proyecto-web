@@ -82,6 +82,6 @@
 [android-development-web]: https://developer.android.com/
 
 [figma-prot-badge]: https://img.shields.io/badge/Ver%20prototipo%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
-[figma-prot-url]: #
+[figma-prot-url]: https://www.figma.com/proto/EIwUT4jkd1yuXhofPPWvC2/Prototipo-figma?type=design&node-id=3-145&t=5GdzRdOR49TdmYTC-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1&mode=design
 [figma-dis-badge]: https://img.shields.io/badge/Ver%20diseño%20UI%20en%20Figma-F24E1E?logo=figma&logoColor=fff&style=flat
-[figma-dis-url]: #
+[figma-dis-url]: https://www.figma.com/file/EIwUT4jkd1yuXhofPPWvC2/Prototipo-figma?type=design&node-id=0%3A1&mode=design&t=aSlFxa85YbvjbBRn-1
