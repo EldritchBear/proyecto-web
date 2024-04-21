@@ -16,12 +16,19 @@
 ### Funcionalidades
 
 > Las funcionalidades que contara nuestra aplicación móvil serán las siguientes:
+> 
 1.-Inicio sesión: el usuario podrá iniciar sesión en la aplicación móvil colocando su nombre de usuario y contraseña, una vez hecho esto, obtendrá acceso al resto de funcionalidades
+
 2.-Registrarse: si el usuario no tiene una cuenta asociada, deberá crear una, introduciendo los datos requeridos para crear una cuenta
+
 3.-Iniciar simulación: permite iniciar la simulación, otorgara al robot la capacidad de realizar sus funcionamientos en un campo de prueba
+
 4.-Historial de simulaciones: Permite revisar las distintas simulaciones realizadas por el usuario, permite ver que objetivos se salvaron y cuales no
+
 5.-Ver robots: El usuario puede ver los robots que posee en una lista, esto le da la oportunidad de editarlos también, alterando su velocidad, la frecuencia del sensor y si las notificaciones están activas
+
 6.-Ver estado: Otorga la capacidad de ver el estado actual de las víctimas en la simulación actual, viendo si están encontradas o no
+
 7.-Editar perfil: El usuario podrá editar su perfil, cambiar sus datos o cerrar sesión
 
 
