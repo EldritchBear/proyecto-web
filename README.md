@@ -8,6 +8,11 @@
 
 </div>
 
+Integrantes: Fernando Arancibia
+             Elías Bernales
+             Reinaldo Foitzick
+             Felipe Zepeda
+
 ## Descripción
 
 El proyecto consiste en diseñar un robot de rescate autónomo capaz de explorar un laberinto, encontrar víctimas, regresar al punto de entrada y evitar agujeros, mientras se desarrolla una aplicación web que permite monitorear a los robots de rescate en tiempo real, visualizando las personas encontradas en el circuito actual y brindando la posibilidad de editar el comportamiento del robot.
