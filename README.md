@@ -42,7 +42,7 @@ El proyecto consiste en diseñar un robot de rescate autónomo capaz de explorar
 ## Maquetación web
 
 > [!NOTE]
-> Los archivos de la maquetación se encuentran subidos en su carpeta correspondiente. La maquetación fue realizada en replit.
+> Los archivos de la maquetación se encuentran subidos en su carpeta correspondiente. La maquetación fue realizada en replit y se utilizo express.js para compilar tailwind.
 
 [js-badge-sm]: https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat
 [js-web]: https://developer.mozilla.org/es/docs/Web/JavaScript
