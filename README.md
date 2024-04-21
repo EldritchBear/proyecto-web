@@ -34,9 +34,6 @@
 
 ## Prototipo
 
-> [!NOTE]
-> Debe reemplazar los URL de los archivos Figma. Ver al final de este archivo, ahí estan los links.
-
 <div align="center">
 
 [![figma-prot-badge]][figma-prot-url] [![figma-dis-badge]][figma-dis-url]
