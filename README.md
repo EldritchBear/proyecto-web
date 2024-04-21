@@ -43,7 +43,7 @@
 ## Maquetación web
 
 > [!NOTE]
-> Debe incluir los archivos de maquetación en la carpeta respectiva, e incluir una breve descripción de dichos archivos.
+> Los archivos de la maquetación se encuentran subidos en su carpeta correspondiente. La maquetación fue realizada en replit.
 
 [js-badge-sm]: https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat
 [js-web]: https://developer.mozilla.org/es/docs/Web/JavaScript
