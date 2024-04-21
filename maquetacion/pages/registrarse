@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="out.css">
+  <title>Registrarse</title>
+</head>
+<body class="bg-black text-black flex justify-center mx-auto max-w-screen-sm">
+  <div class="w-full min-h-screen h-full bg-white px-16 py-24 flex flex-col justify-between">
+    <nav class="">
+        <a href="/inicio_sesion" class="w-20 h-20 block">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"/></svg>
+        </a>
+    </nav>
+    <form class="flex flex-col justify-center items-center gap-2" id="formulario" action="/" method="get">
+      <input type="text" name="Nombre de usuario" placeholder="Nombre de usuario" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2"">
+      <input type="text" name="Rut" placeholder="RUT" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+      <input type="email" name="Correo" placeholder="Correo" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+      <input type="text" name="Región" placeholder="Region" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+      <input type="text" name="Comuna" placeholder="Comuna" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+      <input type="password" name="Contraseña" placeholder="Contraseña" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+      <input type="password" name="Confirmar contraseña" placeholder="Confirmar Contraseña" class="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2">
+    <div class="flex grow justify-center gap-8 items-center text-xl py-4">
+        <span class="">Terminos y condiciones</span>
+        <input type="checkbox" name="terminos" class="w-4 h-4" required>
+    </div>
+    <div class="w-full h-full flex flex-col items-center justify-center">
+        <div class="my-2 text-red-500" id="errores"></div>
+        <button class="bg-neutral-900 mx-auto hover:bg-neutral-800 text-white px-14 py-2 rounded-md mx-2"> 
+          Registrarse
+        </button>
+    </div>
+    </form>
+  </div>
+</body>
+<script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+        event.preventDefault()
+        document.getElementById("errores").innerHTML = ""
+
+        let form = event.target
+        let formData = new FormData(form)
+
+        let errores = []
+        for (let par of formData.entries()) {
+            console.log(par[0] + ": " + par[1]);
+            nombre = par[0]
+            valor = par[1].trim()
+            
+            if (nombre == "terminos") continue
+            
+            if (valor.length < 4) errores.push(`${nombre} no puede ser menor a 4 caracteres`)
+            if (valor.length > 30) errores.push(`${nombre} no puede ser mayor a 30 caracteres`)
+
+            if (nombre == "Correo") {
+                 if (!emailEsValido(par[1].trim())) errores.push("El correo introducido no es válido")       
+            }
+            if (nombre == "Rut") {
+                if (!rutEsValido(par[1].trim())) errores.push("El rut introducido no es válido") 
+            }
+        }
+
+        let contra = formData.get("Contraseña")
+        let confirm = formData.get("Confirmar contraseña")
+        if (contra != confirm) errores.push("Las contraseñas no coinciden")
+
+        if (errores.length > 0) {
+            let contenedor = document.getElementById("errores")
+            errores.forEach((error) => {
+                let mensaje = document.createElement("div")
+                mensaje.textContent = error
+                contenedor.appendChild(mensaje)
+            })
+        } else {
+            event.target.submit()
+        }
+    })
+
+    function emailEsValido(email) {
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return emailRegex.test(email)
+    }
+    
+    function rutEsValido(rut) {
+        let rutRegex = /^(\d{1,2}(?:[\.]?\d{3}){2}-[\dkK])$/
+        return rutRegex.test(rut)
+    }
+</script>
+</html>
