@@ -2,7 +2,7 @@
 EP2.3
 
 Los datos de la aplicación se encontrarán almacenados en una base de datos relacional utilizando el motor PostgreSQL, los datos se encontraran almacenados de la siguiente forma:
-
+```
 Tabla Robots
 
 CREATE TABLE robots (
@@ -36,6 +36,7 @@ CREATE TABLE simulacion_victimas (
     FOREIGN KEY (id_simulacion) REFERENCES simulaciones(id),
     FOREIGN KEY (id_victima) REFERENCES victimas(id)
 );
+```
 
 EP 2.4
 
