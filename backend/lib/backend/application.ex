@@ -7,6 +7,8 @@ defmodule Backend.Application do
 
   @impl true
   def start(_type, _args) do
+    Dotenv.load
+
     children = [
       BackendWeb.Telemetry,
       Backend.Repo,

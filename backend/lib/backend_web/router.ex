@@ -1,12 +1,24 @@
 defmodule BackendWeb.Router do
+  alias BackendWeb.SessionsController
   use BackendWeb, :router
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticate do
+    plug BackendWeb.Plugs.Authenticate
+  end
+
   scope "/api", BackendWeb do
     pipe_through :api
+  end
+
+  scope "/sessions" do
+    pipe_through :api
+
+    post "/sign_in", SessionsController, :create
+    delete "/sign_out", SessionsController, :delete
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
