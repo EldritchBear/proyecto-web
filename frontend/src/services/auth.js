@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4000';
+const API_URL = "https://backend-web.fly.dev/";
 
 export const login = async (email, password) => {
   try {

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { fetchWithAuth } from "../services/auth";
 
-const API_URL = 'http://localhost:4000';
-
 export const sendFormDataAsJson = async (url: string, data: Record<string, any>) => {
   const response = await fetchWithAuth(url, {
     method: 'POST',
