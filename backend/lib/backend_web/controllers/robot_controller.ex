@@ -15,7 +15,6 @@ defmodule BackendWeb.RobotController do
     with {:ok, %Robot{} = robot} <- Robots.create_robot(robot_params) do
       conn
       |> put_status(:created)
-      # |> put_resp_header("location", Routes.robot_path(conn, :show, robot))
       |> render(BackendWeb.RobotJSON, :show, robot: robot)
     end
   end

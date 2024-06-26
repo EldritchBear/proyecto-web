@@ -1,8 +1,4 @@
 defmodule BackendWeb.Router do
-  alias BackendWeb.SimulacionController
-  alias BackendWeb.PersonaController
-  alias BackendWeb.RobotController
-  alias BackendWeb.SessionsController
   use BackendWeb, :router
 
   pipeline :api do
@@ -18,9 +14,10 @@ defmodule BackendWeb.Router do
     resources "/robot", RobotController
     resources "/persona", PersonaController
     resources "/simulacion", SimulacionController
+    get "/get", SessionsController, :get_data
   end
 
-  scope "/sessions" do
+  scope "/sessions", BackendWeb do
     pipe_through :api
 
     post "/sign_in", SessionsController, :create

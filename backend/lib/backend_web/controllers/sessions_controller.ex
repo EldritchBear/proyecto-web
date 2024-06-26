@@ -31,6 +31,26 @@ defmodule BackendWeb.SessionsController do
     end
   end
 
+  def get_data(conn, _params) do
+    IO.inspect(conn)
+
+    case conn.assigns[:signed_user] do
+      nil ->
+        conn
+        |> send_resp(401, "Unauthorized")
+
+      user ->
+        conn
+        |> put_status(:ok)
+        |> json(%{
+          nombre: user.nombre,
+          email: user.email,
+          comuna: user.comuna,
+          region: user.region,
+        })
+    end
+  end
+
   def delete(conn, _) do
     case Usuarios.sign_out(conn) do
       {:error, reason} ->

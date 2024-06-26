@@ -25,8 +25,7 @@ defmodule BackendWeb.Endpoint do
     gzip: false,
     only: BackendWeb.static_paths()
 
-  plug CORSPlug, origin: "*"
-
+  plug Corsica, origins: "*"
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
