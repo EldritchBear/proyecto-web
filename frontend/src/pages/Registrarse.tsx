@@ -1,19 +1,32 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+
+const API_URL = 'http://localhost:4000';
+
+export const sendFormDataAsJson = async (url: string, data: Record<string, any>) => {
+  console.log("url:")
+  console.log(url)
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({usuario: data}),
+  });
+
+  return response;
+};
 
 const emailIsValid = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-const rutIsValid = (rut: string) => {
-  const rutRegex = /^(\d{1,2}(?:[.]?\d{3}){2}-[\dkK])$/;
-  return rutRegex.test(rut);
-};
-
 const Registrarse: React.FC = () => {
   const [errors, setErrors] = useState<string[]>([]);
+  const history = useHistory();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrors([]);
 
@@ -33,8 +46,6 @@ const Registrarse: React.FC = () => {
 
       if (nombre === "Correo" && !emailIsValid(trimmedValue))
         newErrors.push("El correo introducido no es válido");
-      if (nombre === "Rut" && !rutIsValid(trimmedValue))
-        newErrors.push("El rut introducido no es válido");
     }
 
     const password = formData.get("Contraseña") as string;
@@ -45,7 +56,22 @@ const Registrarse: React.FC = () => {
     if (newErrors.length > 0) {
       setErrors(newErrors);
     } else {
-      event.currentTarget.submit();
+      // const formData = new FormData(event.currentTarget);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await sendFormDataAsJson(API_URL + '/sessions/registrar', data);
+        if (response.ok) {
+          // Handle successful registration
+          console.log('User registered successfully');
+          history.push('/inicio_sesion');
+        } else {
+          // Handle error
+          console.error('Registration failed');
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
     }
   };
 
@@ -63,13 +89,12 @@ const Registrarse: React.FC = () => {
         </a>
       </nav>
       <form className="flex flex-col justify-center items-center gap-2" onSubmit={handleSubmit}>
-        <input type="text" name="Nombre de usuario" placeholder="Nombre de usuario" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="text" name="Rut" placeholder="RUT" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="email" name="Correo" placeholder="Correo" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="text" name="Región" placeholder="Region" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="text" name="Comuna" placeholder="Comuna" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="password" name="Contraseña" placeholder="Contraseña" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
-        <input type="password" name="Confirmar contraseña" placeholder="Confirmar Contraseña" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="text" name="nombre" placeholder="Nombre de usuario" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="email" name="email" placeholder="Correo" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="text" name="region" placeholder="Region" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="text" name="comuna" placeholder="Comuna" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="password" name="password" placeholder="Contraseña" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
+        <input type="password" name="" placeholder="Confirmar Contraseña" className="w-1/2 h-12 border border-black rounded-lg px-4 py-2 my-2 mx-2" />
         <div className="flex grow justify-center gap-8 items-center text-xl py-4">
           <span>Terminos y condiciones</span>
           <input type="checkbox" name="terminos" className="w-4 h-4" required />
@@ -80,7 +105,7 @@ const Registrarse: React.FC = () => {
               <div key={index}>{error}</div>
             ))}
           </div>
-          <button type="submit" className="bg-neutral-900 mx-auto hover:bg-neutral-800 text-white px-14 py-2 rounded-md mx-2"> 
+          <button type="submit" className="bg-neutral-900 mx-auto hover:bg-neutral-800 text-white px-14 py-2 rounded-md mx-2">
             Registrarse
           </button>
         </div>

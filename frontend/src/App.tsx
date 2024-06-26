@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import Inicio from './pages/Inicio';
 import Robot from './pages/Robot';
@@ -39,36 +40,36 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/">
+        <ProtectedRoute exact path="/" component={() => (
           <Layout active="Inicio">
             <Inicio />
           </Layout>
-        </Route>
-        <Route exact path="/robot">
+        )} />
+        <ProtectedRoute exact path="/robot" component={() => (
           <Layout active="Robot">
             <Robot />
           </Layout>
-        </Route>
-        <Route exact path="/estado">
+        )} />
+        <ProtectedRoute exact path="/estado" component={() => (
           <Layout active="Estado">
             <Estado />
           </Layout>
-        </Route>
-        <Route exact path="/cuenta">
+        )} />
+        <ProtectedRoute exact path="/cuenta" component={() => (
           <Layout active="Mi Cuenta">
             <MiCuenta />
           </Layout>
-        </Route>
-        <Route exact path="/editar/:id">
+        )} />
+        <ProtectedRoute exact path="/editar/:id" component={() => (
           <Layout active="Robot">
             <Editar />
           </Layout>
-        </Route>
-        <Route exact path="/historial">
+        )} />
+        <ProtectedRoute exact path="/historial" component={() => (
           <Layout active="Inicio">
             <Historial />
           </Layout>
-        </Route>
+        )} />
         <Route exact path="/inicio_sesion">
           <Layout active="_">
             <InicioSesion />
