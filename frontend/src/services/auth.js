@@ -60,7 +60,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     'Content-Type': 'application/json',
   };
 
-  const response = await fetch(url, { ...options, headers });
+  const response = await fetch(API_URL + url, { ...options, headers });
   if (!response.ok) {
     throw new Error('Request failed');
   }

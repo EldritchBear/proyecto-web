@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import Inicio from './pages/Inicio';
 import Robot from './pages/Robot';
+import CrearRobot from './pages/CrearRobot';
 import Estado from './pages/Estado';
 import MiCuenta from './pages/MiCuenta';
 import Editar from './pages/Editar';
@@ -48,6 +49,11 @@ const App: React.FC = () => (
         <ProtectedRoute exact path="/robot" component={() => (
           <Layout active="Robot">
             <Robot />
+          </Layout>
+        )} />
+        <ProtectedRoute exact path="/crear" component={() => (
+          <Layout active="Robot">
+            <CrearRobot />
           </Layout>
         )} />
         <ProtectedRoute exact path="/estado" component={() => (
