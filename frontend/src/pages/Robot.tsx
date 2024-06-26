@@ -37,6 +37,7 @@ const Robot: React.FC = () => {
                   </div>
               </div>
           ))}
+      <a href="/crear" className="mt-8 bg-neutral-900 mx-auto hover:bg-neutral-800 text-white px-14 py-2 rounded-md my-1 mx-4">Añadir robot</a>
       </div>
     </>
   );

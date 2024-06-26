@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { fetchWithAuth } from "../services/auth";
 
 type Datos = {
   nombre: string;
-  correo: string;
+  email: string;
   region: string;
   comuna: string;
 }
 
 const MiCuenta: React.FC = () => {
   const [datos, setDatos] = useState<Datos>();
-  
+
   useEffect(() => {
-    fetch('/datos_usuario.json')
-      .then(response => response.json())
-      .then(data => setDatos(data))
-      .catch(error => console.error('Error cargando datos de archivo:', error));
+    fetchWithAuth("/api/get").then((data) => setDatos(data))
   }, []);
-  
+
   return (
     <>
       <nav className="">
@@ -38,9 +36,9 @@ const MiCuenta: React.FC = () => {
               <h3 className="text-xl">{datos?.nombre}</h3>
             </div>
           </div>
-          <div className="w-full h-full grow flex flex-col px-12 py-6 my-2">
+          <div className="w-full h-full grow flex flex-col justify-center gap-8 px-4 py-6 my-2">
             <div className="flex justify-between items-center">
-              <div className="my-2 mx-2">Correo: {datos?.correo}</div>
+              <div className="my-2 mx-2">Correo: {datos?.email}</div>
             </div>
             <div className="flex justify-between items-center">
               <div className="my-2 mx-2">Región: {datos?.region}</div>

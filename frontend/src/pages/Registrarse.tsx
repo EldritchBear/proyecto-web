@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import { fetchWithAuth } from "../services/auth";
 
 const API_URL = 'http://localhost:4000';
 
 export const sendFormDataAsJson = async (url: string, data: Record<string, any>) => {
-  console.log("url:")
-  console.log(url)
-  const response = await fetch(url, {
+  const response = await fetchWithAuth(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -60,7 +59,7 @@ const Registrarse: React.FC = () => {
       const data = Object.fromEntries(formData.entries());
 
       try {
-        const response = await sendFormDataAsJson(API_URL + '/sessions/registrar', data);
+        const response = await sendFormDataAsJson( '/sessions/registrar', data);
         if (response.ok) {
           // Handle successful registration
           console.log('User registered successfully');
