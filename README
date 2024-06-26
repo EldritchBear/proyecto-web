@@ -1,0 +1,16 @@
+# Entrega final
+
+## Dependencias
+Para correr este proyecto correctamente, es tener instaladas las siguientes dependencias:
+- Node v21
+- Elixir v1.17
+- Postgres (con un usuario llamado `postgres` y contraseña `postgres`)
+
+## Ejecución
+Primero, es necesario asegurarse de que postgres esté corriendo.
+
+### Frontend
+Se debe ejecutar el comando `npm install` en el directorio `/frontend`, y luego `npx ionic serve` para correr la aplicación.
+
+### Backend
+Se debe ejecutar el comando `mix setup` para instalar las dependencias del proyecto de Elixir, y luego `mix phx.server` para ejecutar el servidor.
