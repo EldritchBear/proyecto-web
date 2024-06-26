@@ -8,28 +8,28 @@ defmodule BackendWeb.PersonaController do
 
   def index(conn, _params) do
     personas = Personas.list_personas()
-    render(conn, :index, personas: personas)
+    render(conn, BackendWeb.PersonaJSON, :index, personas: personas)
   end
 
   def create(conn, %{"persona" => persona_params}) do
     with {:ok, %Persona{} = persona} <- Personas.create_persona(persona_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/personas/#{persona}")
-      |> render(:show, persona: persona)
+      # |> put_resp_header("location", Routes.persona_path(conn, :show, persona))
+      |> render(BackendWeb.PersonaJSON, :show, persona: persona)
     end
   end
 
   def show(conn, %{"id" => id}) do
     persona = Personas.get_persona!(id)
-    render(conn, :show, persona: persona)
+    render(conn, BackendWeb.PersonaJSON, :show, persona: persona)
   end
 
   def update(conn, %{"id" => id, "persona" => persona_params}) do
     persona = Personas.get_persona!(id)
 
     with {:ok, %Persona{} = persona} <- Personas.update_persona(persona, persona_params) do
-      render(conn, :show, persona: persona)
+      render(conn, BackendWeb.PersonaJSON, :show, persona: persona)
     end
   end
 

@@ -6,7 +6,7 @@ defmodule BackendWeb.Plugs.Authenticate do
       {:ok, token} ->
         case Backend.Repo.get_by(Backend.AuthToken, %{token: token, revoked: false}) |> Backend.Repo.preload(:usuarios) do
           nil -> unauthorized(conn)
-          auth_token -> authorized(conn, auth_token.user)
+          auth_token -> authorized(conn, auth_token.usuarios)
         end
       _ -> unauthorized(conn)
     end

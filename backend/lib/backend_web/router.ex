@@ -1,4 +1,7 @@
 defmodule BackendWeb.Router do
+  alias BackendWeb.SimulacionController
+  alias BackendWeb.PersonaController
+  alias BackendWeb.RobotController
   alias BackendWeb.SessionsController
   use BackendWeb, :router
 
@@ -11,23 +14,21 @@ defmodule BackendWeb.Router do
   end
 
   scope "/api", BackendWeb do
-    pipe_through :api
+    pipe_through [:api, :authenticate]
+    resources "/robot", RobotController
+    resources "/persona", PersonaController
+    resources "/simulacion", SimulacionController
   end
 
   scope "/sessions" do
     pipe_through :api
 
     post "/sign_in", SessionsController, :create
+    post "/registrar", SessionsController, :new
     delete "/sign_out", SessionsController, :delete
   end
 
-  # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:backend, :dev_routes) do
-    # If you want to use the LiveDashboard in production, you should put
-    # it behind authentication and allow only admins to access it.
-    # If your application does not have an admins-only section yet,
-    # you can use Plug.BasicAuth to set up some basic authentication
-    # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do

@@ -1,5 +1,6 @@
 defmodule BackendWeb.SessionsController do
   use BackendWeb, :controller
+  alias Backend.Repo
   alias Backend.Usuarios
 
   def create(conn, %{"email" => email, "password" => password}) do
@@ -13,6 +14,20 @@ defmodule BackendWeb.SessionsController do
         conn
         |> put_status(:unauthorized)
         |> json(%{error: reason})
+    end
+  end
+
+  def new(conn, %{"usuario" => usuario_params}) do
+    with {:ok, %Usuarios{} = _usuario} <-
+           %Usuarios{} |> Usuarios.changeset(usuario_params) |> Repo.insert() do
+      conn
+      |> put_status(:created)
+      |> json(%{message: "User created successfully"})
+    else
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> json(%{error: "User creation failed", details: changeset})
     end
   end
 

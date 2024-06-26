@@ -23,4 +23,11 @@ defmodule BackendWeb.RobotJSON do
       notificaciones: robot.notificaciones
     }
   end
+
+  # @doc """
+  # Renders a success message.
+  # """
+  # def success(%{message: message}) do
+  #   %{data: message}
+  # end
 end

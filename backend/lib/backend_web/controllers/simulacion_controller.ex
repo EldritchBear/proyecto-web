@@ -8,28 +8,28 @@ defmodule BackendWeb.SimulacionController do
 
   def index(conn, _params) do
     simulaciones = Simulaciones.list_simulaciones()
-    render(conn, :index, simulaciones: simulaciones)
+    render(conn, BackendWeb.SimulacionJSON, :index, simulaciones: simulaciones)
   end
 
   def create(conn, %{"simulacion" => simulacion_params}) do
     with {:ok, %Simulacion{} = simulacion} <- Simulaciones.create_simulacion(simulacion_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/simulaciones/#{simulacion}")
-      |> render(:show, simulacion: simulacion)
+      # |> put_resp_header("location", Routes.simulacion_path(conn, :show, simulacion))
+      |> render(BackendWeb.SimulacionJSON, :show, simulacion: simulacion)
     end
   end
 
   def show(conn, %{"id" => id}) do
     simulacion = Simulaciones.get_simulacion!(id)
-    render(conn, :show, simulacion: simulacion)
+    render(conn, BackendWeb.SimulacionJSON, :show, simulacion: simulacion)
   end
 
   def update(conn, %{"id" => id, "simulacion" => simulacion_params}) do
     simulacion = Simulaciones.get_simulacion!(id)
 
     with {:ok, %Simulacion{} = simulacion} <- Simulaciones.update_simulacion(simulacion, simulacion_params) do
-      render(conn, :show, simulacion: simulacion)
+      render(conn, BackendWeb.SimulacionJSON, :show, simulacion: simulacion)
     end
   end
 

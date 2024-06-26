@@ -8,28 +8,28 @@ defmodule BackendWeb.RobotController do
 
   def index(conn, _params) do
     robots = Robots.list_robots()
-    render(conn, :index, robots: robots)
+    render(conn, BackendWeb.RobotJSON, :index, robots: robots)
   end
 
   def create(conn, %{"robot" => robot_params}) do
     with {:ok, %Robot{} = robot} <- Robots.create_robot(robot_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/robots/#{robot}")
-      |> render(:show, robot: robot)
+      # |> put_resp_header("location", Routes.robot_path(conn, :show, robot))
+      |> render(BackendWeb.RobotJSON, :show, robot: robot)
     end
   end
 
   def show(conn, %{"id" => id}) do
     robot = Robots.get_robot!(id)
-    render(conn, :show, robot: robot)
+    render(conn, BackendWeb.RobotJSON, :show, robot: robot)
   end
 
   def update(conn, %{"id" => id, "robot" => robot_params}) do
     robot = Robots.get_robot!(id)
 
     with {:ok, %Robot{} = robot} <- Robots.update_robot(robot, robot_params) do
-      render(conn, :show, robot: robot)
+      render(conn, BackendWeb.RobotJSON, :show, robot: robot)
     end
   end
 
