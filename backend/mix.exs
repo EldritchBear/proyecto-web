@@ -48,7 +48,7 @@ defmodule Backend.MixProject do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:dotenv, "~> 3.0.0"},
-      {:corsica, "~> 2.0"}
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
